@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Tile : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class Tile : MonoBehaviour
     private void OnTriggerEnter(Collider col)
     {
         var color = col.GetComponent<PlayerCore>().myColor;
-        if (myColor != color)
+        if (this.myColor != color)
         {
             ChangeMyColor(color);
         }
@@ -23,6 +24,11 @@ public class Tile : MonoBehaviour
     void ChangeMyColor(Color color)
     {
         GetComponent<Renderer>().material.color = color;
-        myColor = color;
+        this.myColor = color;
+
+        if (this.myColor == Color.red)
+            transform.parent.tag = "Red";
+        else if (this.myColor == Color.blue)
+            transform.parent.tag = "Blue";
     }
 }

@@ -7,6 +7,10 @@ using Photon.Realtime;
 public class PunTest : MonoBehaviourPunCallbacks
 {
     public bool ServerFlg; //サーバーフラグ
+
+    [SerializeField]
+    GameObject tileParent;
+
     public void Login(string ip, bool sf)
     {
         //サーバーフラグの設定
@@ -30,7 +34,7 @@ public class PunTest : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         // ランダムな位置にネットワークオブジェクトを生成する
-        var v = new Vector3(Random.Range(-4f, 4f), 0, Random.Range(-4f, 4f));
+        var v = new Vector3(Random.Range(1f, 9f), 0, Random.Range(1f, 9f));
         
         //参加
         if (ServerFlg)
@@ -41,7 +45,8 @@ public class PunTest : MonoBehaviourPunCallbacks
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    GameObject Tile = PhotonNetwork.Instantiate("Tile", new Vector3(j, 0.01f, i), Quaternion.identity);
+                    GameObject Tile = PhotonNetwork.Instantiate("Tile_test", new Vector3(j, 0.02f, i), Quaternion.Euler(90,0,0));
+                    Tile.transform.parent = tileParent.transform;
                 }
             }
         }

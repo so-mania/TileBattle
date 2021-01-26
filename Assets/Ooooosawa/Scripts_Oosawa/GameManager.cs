@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
             {
                 countTxt.enabled = false;
                 isPlaying = true;
+                TimeText.enabled = true;
             }
         }
 
@@ -43,13 +45,37 @@ public class GameManager : MonoBehaviour
         {
             playTime -= Time.deltaTime;
             TimeText.text = string.Format("{0}", (int)playTime);
+
+            // 終了
+            if (playTime <= 0)
+            {
+                TimeText.enabled = false;
+                isPlaying = false;
+                Judge();
+            }
         }
 
-        //ゲーム終了
-        if (playTime <= 0)
-        {
-            TimeText.enabled = false;
+    }
 
+    private void Judge()
+    {
+        var Reds = GameObject.FindGameObjectsWithTag("Red");
+        var Blues = GameObject.FindGameObjectsWithTag("Blue");
+
+        if (Reds.Length > Blues.Length)
+        {
+            countTxt.text = "Player1 Win";
+            countTxt.enabled = true;
+        }
+        else if (Blues.Length > Reds.Length)
+        {
+            countTxt.text = "Player2 Win";
+            countTxt.enabled = true;
+        }
+        else
+        {
+            countTxt.text = "Draw";
+            countTxt.enabled = true;
         }
     }
 }
