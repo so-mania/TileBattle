@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class PlayerMover : MonoBehaviour
+public class PlayerMover : MonoBehaviourPunCallbacks
 {
     Rigidbody rb;
     [SerializeField]
@@ -22,8 +23,8 @@ public class PlayerMover : MonoBehaviour
     }
     void FixedUpdate()
     {
-
-        Move();
+        if(photonView.IsMine)
+            Move();
     }
 
     void Move()
