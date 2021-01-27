@@ -2508,6 +2508,7 @@ GameObject:
   - component: {fileID: -6100600652196516444}
   - component: {fileID: -8185729280949419039}
   - component: {fileID: -4820699529467844063}
+  - component: {fileID: 788961630940409855}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player1
@@ -2615,6 +2616,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: -8185729280949419039}
+  - {fileID: 788961630940409855}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2646,6 +2648,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b14181e3b724c4ba3585fe9d30abe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &788961630940409855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799160177396638309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 1
+    Name: isRunning
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
 --- !u!1 &799165218459406969
 GameObject:
   m_ObjectHideFlags: 0
